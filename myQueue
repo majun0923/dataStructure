@@ -1,22 +1,22 @@
-class MyQuean {
+class MyQueue {
     
     private List<Integer> data;
     
     private int p_start;
     
-    public MyQuean(){
+    public MyQueue(){
         data = new ArrayList<Integer>();
         p_start = 0;
         
     }
 
-    public boolean enQuean(int x){
+    public boolean enQueue(int x){
         data.add(x);
         return true;
     }
     
     
-    public boolean deQuean(){
+    public boolean deQueue(){
         if(isEmpty()){
             return false;
         }
@@ -36,14 +36,14 @@ class MyQuean {
 
 public class Main{
      public static void main(String[] args) {
-        MyQuean q = new MyQuean();
-        q.enQuean(1);
-        q.enQuean(2);
-        q.enQuean(3);
+        MyQueue q = new MyQueue();
+        q.enQueue(1);
+        q.enQueue(2);
+        q.enQueue(3);
         System.out.println(q.Front());
-        q.deQuean();
+        q.deQueue();
         System.out.println(q.Front());
-        q.deQuean();
+        q.deQueue();
          System.out.println(q.isEmpty());
     }
 }
