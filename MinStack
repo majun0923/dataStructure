@@ -1,0 +1,63 @@
+class MinStack {
+    
+    private Stack<Integer> s;
+    private Stack<Integer> helper;
+    
+    /** initialize your data structure here. */
+    public MinStack() {
+        s = new Stack<Integer>();
+        helper = new Stack<Integer>();
+    }
+    
+    public void push(int x) {
+        s.push(x);
+        if(helper.isEmpty()){
+           helper.push(x); 
+           return;
+        }
+        if( helper.peek() >= x ){
+            helper.push(x); 
+        }
+    }
+    
+    public void pop() {
+        if(!s.isEmpty()){
+            int x = s.peek();
+            s.pop();
+            if(x == helper.peek()){
+                helper.pop(); 
+            }
+        }
+    }
+    
+    public int top() {
+      return  s.peek();
+    }
+    
+    public int getMin() {
+        
+            return helper.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(x);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
+
+public class Main{
+    public static void main(String[] args){
+        MinStack m = new MinStack();
+        m.push(1);
+        m.push(3);
+        m.push(-1);
+        System.out.println(m.getMin());
+            
+        
+    }
+    
+}
