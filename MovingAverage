@@ -1,0 +1,39 @@
+class MovingAverage {
+    private int size,head = 0,windowSum = 0,count = 0;
+    int[] queue;
+    
+    /** Initialize your data structure here. */
+    public MovingAverage(int k) {
+        size = k;
+        queue = new int[k];
+    }
+    
+    public double next(int value) {
+        ++count;
+        int tail = (head+1)%size;
+        windowSum = windowSum - queue[tail]+value;
+        head = (head + 1)%size;
+        queue[head] = value;
+        double res = windowSum * 1.0 / Math.min(size, count);
+        return res;
+        
+    }
+}
+
+/**
+ * Your MovingAverage object will be instantiated and called as such:
+ * MovingAverage obj = new MovingAverage(size);
+ * double param_1 = obj.next(val);
+ */
+
+public class Main{
+    public static void main(String[] args){
+        MovingAverage m = new MovingAverage(3);
+        m.next(1);
+        m.next(2);
+        m.next(4);
+        System.out.println(m.next(3));
+                
+    }
+    
+}
