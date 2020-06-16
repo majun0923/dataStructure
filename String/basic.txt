@@ -1,0 +1,5 @@
+Java String  比较 == No 比较对象
+
+Java 字符串不可变 时间复杂度 O(N*N)
+
+拼接字符串 其他数据接口SringBuilder
