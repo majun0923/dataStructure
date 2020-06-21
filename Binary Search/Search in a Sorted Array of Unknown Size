@@ -1,0 +1,33 @@
+/**
+ * // This is ArrayReader's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface ArrayReader {
+ *     public int get(int index) {}
+ * }
+ */
+
+class Solution {
+    public int search(ArrayReader reader, int target) {
+        int s = 0 , e = 1,res = -1;
+        while(reader.get(e)<target)
+        {
+            int news= e+1;
+            e = news+(e-s+1) * 2;
+            s = news;
+        }
+        while(s<=e){
+            int mid = s+(e-s)/2;
+            if(reader.get(mid)==target){
+                return mid;
+            }else if(reader.get(mid)>target){
+                e = mid-1;
+            }else{
+                s = mid+1;
+            }
+
+
+        }
+
+        return res;
+    }
+}
