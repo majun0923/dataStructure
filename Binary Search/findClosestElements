@@ -1,0 +1,21 @@
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> result = new ArrayList<Integer>();
+        int left = 0;
+        int length = arr.length;
+        int right = length - 1;
+        while(left < right){
+            int mid = (left + right) >>> 1;
+            if(mid + k >= length || Math.abs(arr[mid] - x) <= Math.abs(arr[mid+k] - x)){
+                right = mid;
+            }
+            else{
+                left = mid + 1;
+            }
+        }
+        for(int i = left;i<left+k;i++){
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
