@@ -1,0 +1,26 @@
+class Solution {
+
+    private Integer getnext(Integer n){
+        Integer res= 0;
+        while(n>0){
+            int d = n % 10;
+            res+= d*d;
+            n=n/10;
+        }
+        return res;
+    }
+
+
+    public boolean isHappy(int n) {
+        Set<Integer> s = new HashSet<>();
+        while(n!=1){
+            n=this.getnext(n);
+            if(s.contains(n)){
+                return false;
+            }else{
+                s.add(n);
+            }
+        }
+        return true;
+    }
+}
